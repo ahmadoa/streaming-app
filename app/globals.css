@@ -6,27 +6,28 @@
     .customBG {
         background: hsl(0, 0%, 4%);
         background-image: url('./../public/bg.png');
+        background-repeat: no-repeat;
+        background-size: cover;
     }
 
     
-
+    /*custom carousel*/
     .carouselContainer{
       scroll-snap-type: x mandatory;
       -webkit-overflow-scrolling: touch;
       overflow: auto;
     }
 
-    
-    .carousel {
+    .carouse {
       scroll-snap-align: start;
+    }
+
+    .carouse:hover > div:not(:hover) {
+      filter: blur(4px)
     }
 
     .carousel-scrollbar-hide::-webkit-scrollbar {
       display: none;
-    }
-    
-    .carousel:hover > div:not(:hover) {
-      filter: blur(4px)
     }
 
     .CarouselItem {
@@ -35,9 +36,42 @@
       scroll-snap-stop: always;
     }
 
+    
+
     .CarouselItem:hover::before{
       content: '';
       background-color: #64646434;
 
     }
+
+    /*more custorm slider props for carousels other than the homepage's*/
+    .slider{
+      scroll-snap-align: start;
+    }
+    
+    .item{
+      flex: 0 0 10rem;
+      scroll-snap-align: start;
+      scroll-snap-stop: always;
+    }
+
+    /*custom scrollbar*/
+    .customScrollBar::-webkit-scrollbar-track
+    {
+      -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+      background-color: #F5F5F5;
+    }
+    
+    .customScrollBar::-webkit-scrollbar
+    {
+      width: 10px;
+      background-color: #F5F5F5;
+    }
+    
+    .customScrollBar::-webkit-scrollbar-thumb
+    {
+      -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+      background-color: #122d28;
+    }
+    
   }

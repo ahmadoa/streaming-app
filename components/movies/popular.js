@@ -5,7 +5,7 @@ import Animation from "../titleAnimation";
 
 export default async function Popular() {
   const data = await fetch(
-    `https://api.themoviedb.org/3/movie/popular?api_key=${process.env.API_KEY}&language=en-US&page=1`,
+    `https://api.themoviedb.org/3/movie/popular?api_key=${process.env.API_KEY}&language=en-US&page=1&region=US`,
     { next: { revalidate: 3600 } }
   );
   const res = await data.json();

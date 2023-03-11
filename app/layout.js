@@ -19,9 +19,9 @@ export default function RootLayout({ children }) {
           sizes="32x32"
         />
       </head>
-      <body className="customBG w-full h-min overflow-x-hidden customScrollBar">
+      <body className="bg-[#061509] w-full h-screen overflow-x-hidden customScrollBar">
         <Nav />
-        <div className="w-full">{children}</div>
+        <div className="w-full h-[88%]">{children}</div>
       </body>
     </html>
   );

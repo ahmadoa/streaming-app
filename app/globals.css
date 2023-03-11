@@ -4,13 +4,10 @@
 
 @layer components {
     .customBG {
-        background: hsl(0, 0%, 4%);
-        background-image: url('./../public/bg.png');
-        background-repeat: no-repeat;
-        background-size: cover;
+      background: rgb(34,34,34);
+      background: linear-gradient(82deg, rgba(34,34,34,1) 0%, rgba(0,0,0,1) 10%, rgba(0,0,0,1) 81%, rgb(15, 28, 18) 100%);
     }
 
-    
     /*custom carousel*/
     .carouselContainer{
       scroll-snap-type: x mandatory;
@@ -55,6 +52,12 @@
       scroll-snap-stop: always;
     }
 
+    .castItem{
+      flex: 0 0 3.5rem;
+      scroll-snap-align: start;
+      scroll-snap-stop: always;
+    }
+
     /*custom scrollbar*/
     .customScrollBar::-webkit-scrollbar-track
     {
@@ -72,6 +75,18 @@
     {
       -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
       background-color: #122d28;
+    }
+
+
+    .vignette {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      box-shadow: 2px -250px 110px -40px rgba(0,0,0,0.75) inset;
+-webkit-box-shadow: 2px -250px 110px -40px rgba(0,0,0,0.75) inset;
+-moz-box-shadow: 2px -250px 110px -40px rgba(0,0,0,0.75) inset;
     }
     
   }

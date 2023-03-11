@@ -29,7 +29,7 @@ export default async function Upcoming() {
         </div>
       </Animation>
       <div className="carouselContainer carousel-scrollbar-hide py-4">
-        <CarouselWrapper>
+        <CarouselWrapper childType="diff">
           {res.results.map((movie) => (
             <MediaCard
               media={movie}

@@ -13,7 +13,7 @@ const variants = {
   },
 };
 
-export default function carouselWrapper({ children }) {
+export default function carouselWrapper({ children, childType }) {
   return (
     <AnimatePresence>
       <motion.div
@@ -25,7 +25,11 @@ export default function carouselWrapper({ children }) {
         transition={{
           default: { ease: "easeInOut" },
         }}
-        className="h-full slider flex gap-5 flex-nowrap"
+        className={
+          childType == "cast"
+            ? `h-full slider flex gap-2 flex-nowrap`
+            : `h-full slider flex gap-5 flex-nowrap`
+        }
       >
         {children}
       </motion.div>

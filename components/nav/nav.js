@@ -11,7 +11,7 @@ export default function nav() {
 
   return (
     <div
-      className={`w-full h-[10%] px-10 mt-6 mb-3 flex flex-row items-center text-white justify-between`}
+      className={`w-full h-[10%] px-10 pt-6 mb-3 flex flex-row items-center text-white justify-between`}
     >
       <div className="flex flex-row items-center w-[70%]">
         <Image src={Logo} className="w-6 h-7" alt="Kinetic logo" />
@@ -27,7 +27,7 @@ export default function nav() {
           </li>
           <li
             className={
-              path == "/movies"
+              path >= "/movies"
                 ? `text-primary transition-all hover:scale-110 hover:text-primary ease-in-out duration-300`
                 : `transition-all hover:scale-110 hover:text-primary ease-in-out duration-300`
             }

@@ -33,7 +33,15 @@ export default function mediaCard({ media, category, type }) {
           default: { ease: "easeInOut" },
         }}
         className="item min-h-[15rem] min-w-[10rem] bg-card rounded-lg p-2 flex flex-col relative cursor-pointer"
-        onClick={() => router.push(`/${category}/${media.id}`)}
+        onClick={() =>
+          router.push(
+            `/${category}/${
+              type == "airingToday" || type == "discover" || type == "trending"
+                ? media.name
+                : media.title
+            }/${media.id}`
+          )
+        }
       >
         <div className="poster_container w-full h-[85%] relative rounded-lg overflow-hidden">
           <Image

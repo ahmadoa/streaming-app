@@ -15,7 +15,7 @@ const Card = {
 export default function posterSlider({ post, category }) {
   const imagePath = "https://image.tmdb.org/t/p/original";
   const router = useRouter();
-  
+
   return (
     <AnimatePresence key={post.id}>
       <motion.div
@@ -30,7 +30,7 @@ export default function posterSlider({ post, category }) {
         transition={{
           default: { ease: "easeInOut" },
         }}
-        className="item min-h-[9rem] min-w-[14rem] rounded-lg brightness-[0.8] relative cursor-pointer overflow-hidden"
+        className="posterItem min-h-[9rem] min-w-[14rem] rounded-lg brightness-[0.8] relative cursor-pointer overflow-hidden"
         onClick={() =>
           router.push(
             `/${category == "movie" ? "movies" : "tvShows"}/${

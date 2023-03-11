@@ -19,7 +19,7 @@ export default async function Home() {
       <div className="w-full h-[85%] carouselContainer carousel-scrollbar-hide">
         <SectionWrapper>
           {res.results.map((trend) => (
-            <Trending trend={trend} />
+            <Trending trend={trend} key={trend.id} />
           ))}
         </SectionWrapper>
       </div>

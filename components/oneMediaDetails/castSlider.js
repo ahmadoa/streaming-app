@@ -15,7 +15,11 @@ export default async function posters({ id, category }) {
       <div className="bg-[#061509] bg-opacity-70 carouselContainer carousel-scrollbar-hide p-1 mt-2  rounded-full">
         <CarouselWrapper childType="cast">
           {res.cast.map((actor) =>
-            actor.profile_path != null ? <Cast actor={actor} /> : <></>
+            actor.profile_path != null ? (
+              <Cast actor={actor} key={actor.id} />
+            ) : (
+              <></>
+            )
           )}
         </CarouselWrapper>
       </div>

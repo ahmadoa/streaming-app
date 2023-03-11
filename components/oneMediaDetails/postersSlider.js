@@ -10,14 +10,14 @@ export default async function posters({ id, category }) {
   const res = await data.json();
 
   return (
-    <div className="w-full flex flex-col">
+    <div className="flex flex-col">
       <h1 className="mt-2 text-secondary font-medium text-xl">
         Similar {category == "movie" ? "Movies" : "TVShows"}
       </h1>
       <div className="carouselContainer carousel-scrollbar-hide py-3">
         <CarouselWrapper childType="diff">
           {res.results.map((movie) => (
-            <Poster post={movie} category={category} />
+            <Poster post={movie} category={category} key={movie.id} />
           ))}
         </CarouselWrapper>
       </div>

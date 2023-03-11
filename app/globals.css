@@ -52,6 +52,12 @@
       scroll-snap-stop: always;
     }
 
+    .posterItem{
+      flex: 0 0 14rem;
+      scroll-snap-align: start;
+      scroll-snap-stop: always;
+    }
+
     .castItem{
       flex: 0 0 3.5rem;
       scroll-snap-align: start;

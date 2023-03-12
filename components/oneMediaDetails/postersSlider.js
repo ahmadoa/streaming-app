@@ -1,5 +1,6 @@
 import CarouselWrapper from "../carouselWrapper";
 import Poster from "./poster";
+import Animate from "../titleAnimation";
 
 export default async function posters({ id, category }) {
   /*Get posters of media*/
@@ -11,16 +12,24 @@ export default async function posters({ id, category }) {
 
   return (
     <div className="flex flex-col">
-      <h1 className="mt-2 text-secondary font-medium text-xl">
-        Similar {category == "movie" ? "Movies" : "TVShows"}
-      </h1>
-      <div className="carouselContainer carousel-scrollbar-hide py-3">
-        <CarouselWrapper childType="diff">
-          {res.results.map((movie) => (
-            <Poster post={movie} category={category} key={movie.id} />
-          ))}
-        </CarouselWrapper>
-      </div>
+      {res && (
+        <Animate>
+          <h1 className="mt-2 text-secondary font-medium text-xl">
+            Similar {category == "movie" ? "Movies" : "TVShows"}
+          </h1>
+          <div className="carouselContainer carousel-scrollbar-hide py-3">
+            <CarouselWrapper childType="diff">
+              {res.results.map((movie) =>
+                movie.backdrop_path != null ? (
+                  <Poster post={movie} category={category} key={movie.id} />
+                ) : (
+                  <></>
+                )
+              )}
+            </CarouselWrapper>
+          </div>
+        </Animate>
+      )}
     </div>
   );
 }

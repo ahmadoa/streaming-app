@@ -7,13 +7,6 @@ import { Suspense } from "react";
 import Loading from "@/app/loading";
 import AnimateUp from "@/components/animateUp";
 
-/*turn runtime of movie into hours + minutes*/
-function time_convert(num) {
-  var hours = Math.floor(num / 60);
-  var minutes = num % 60;
-  return hours + "h " + minutes + "m";
-}
-
 /*get only year from release date*/
 function getYear(string) {
   return string.slice(0, 4);
@@ -51,37 +44,37 @@ function closestDate(obj) {
   return closest;
 }
 
-export default async function Movie({ params }) {
-  /*Get id of the movie*/
+export default async function tvShow({ params }) {
+  /*Get id of the tvshow*/
   let path = String(params.id);
-  const movieID = path.slice(path.indexOf(",") + 1);
+  const tvID = path.slice(path.indexOf(",") + 1);
 
   /*Note: title of page not set*/
 
-  /*Get data of the movie*/
+  /*Get data of the tvshow*/
   const data = await fetch(
-    `https://api.themoviedb.org/3/movie/${movieID}?api_key=${process.env.API_KEY}&language=en-US`,
+    `https://api.themoviedb.org/3/tv/${tvID}?api_key=${process.env.API_KEY}&language=en-US`,
     { next: { revalidate: 3600 } }
   );
   const res = await data.json();
 
-  /*Get posters of media*/
+  /*Get posters of tvshow*/
   const posterData = await fetch(
-    `https://api.themoviedb.org/3/movie/${movieID}/credits?api_key=${process.env.API_KEY}&language=en-US`,
+    `https://api.themoviedb.org/3/tv/${tvID}/credits?api_key=${process.env.API_KEY}&language=en-US`,
     { next: { revalidate: 3600 } }
   );
   const resData = await posterData.json();
 
-  /*get trailers of movie*/
+  /*get trailers of tvshow*/
   const TrailerData = await fetch(
-    `https://api.themoviedb.org/3/movie/${movieID}/videos?api_key=${process.env.API_KEY}&language=en-US`
+    `https://api.themoviedb.org/3/tv/${tvID}/videos?api_key=${process.env.API_KEY}&language=en-US`
   );
   const TrailerDataRes = await TrailerData.json();
 
   /*images path start*/
   const imagePath = "https://image.tmdb.org/t/p/original";
 
-  /*youtube*/
+  /*youtube path*/
   const youtubePath = "https://www.youtube.com/watch?v=";
 
   /*get the latest dropped trailer of tvshow*/
@@ -103,12 +96,12 @@ export default async function Movie({ params }) {
 
         {res && (
           <div className="w-full h-full flex flex-col justify-between ml-10 absolute top-0 py-5">
-            {/*details of movie section*/}
+            {/*details of tvshow section*/}
             <AnimateUp>
               <div className="w-full flex flex-row">
-                <div className="overview w-[50%] flex flex-col">
+                <div className="overview w-[60%] flex flex-col">
                   <div className="font-bold text-3xl text-secondary mb-5">
-                    {res.title}
+                    {res.name}
                   </div>
                   <div className="flex flex-row justify-between mb-3">
                     <div className="flex flex-row items-center text-secondary">
@@ -122,8 +115,6 @@ export default async function Movie({ params }) {
                       |<div className="pl-1">{res.vote_count}</div>
                     </div>
                     <div className="flex flex-row items-center justify-center pr-5 text-neutral-200">
-                      <div>{time_convert(res.runtime)}</div>
-                      <div className="scale-[2.5] mb-1 mx-2">&#183;</div>
                       <div>
                         {res.genres.map((genre, i) => {
                           if (i + 1 === res.genres.length) {
@@ -136,13 +127,13 @@ export default async function Movie({ params }) {
                         })}
                       </div>
                       <div className="scale-[2.5] mb-1 mx-2">&#183;</div>
-                      <div>{getYear(res.release_date)}</div>
+                      <div>{getYear(res.first_air_date)}</div>
                     </div>
                   </div>
                   <div className="text-sm text-neutral-300">{res.overview}</div>
                 </div>
                 {Trailer != null && (
-                  <div className="w-[50%] flex flex-col text-white items-end mr-20">
+                  <div className="w-[40%] flex flex-col text-white items-end mr-20">
                     <Link
                       href={youtubePath + Trailer.key}
                       target="_blank"
@@ -162,11 +153,10 @@ export default async function Movie({ params }) {
                 </div>
               </div>
             )}
-
-            {/*similar movies section*/}
+            {/*similar tvShows Section*/}
             <div className="w-full flex flex-row">
               <div className="w-full">
-                <SimilarMovies id={movieID} category="movie" />
+                <SimilarMovies id={tvID} category="tv" />
               </div>
             </div>
           </div>

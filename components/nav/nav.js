@@ -27,7 +27,7 @@ export default function nav() {
           </li>
           <li
             className={
-              path >= "/movies"
+              path.startsWith("/movies")
                 ? `text-primary transition-all hover:scale-110 hover:text-primary ease-in-out duration-300`
                 : `transition-all hover:scale-110 hover:text-primary ease-in-out duration-300`
             }
@@ -36,7 +36,7 @@ export default function nav() {
           </li>
           <li
             className={
-              path == "/tvShows"
+              path.startsWith("/tvShows")
                 ? `text-primary transition-all hover:scale-110 hover:text-primary ease-in-out duration-300`
                 : `transition-all hover:scale-110 hover:text-primary ease-in-out duration-300`
             }

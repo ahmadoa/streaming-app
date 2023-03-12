@@ -3,7 +3,6 @@ import Link from "next/link";
 import Image from "next/image";
 import Logo from "./../../public/logo.png";
 import "./../../app/globals.css";
-import SearchBox from "./searchBox";
 import { usePathname } from "next/navigation";
 
 export default function nav() {
@@ -45,7 +44,6 @@ export default function nav() {
           </li>
         </ul>
       </div>
-      <SearchBox />
     </div>
   );
 }

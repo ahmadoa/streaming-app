@@ -12,7 +12,7 @@ export default async function posters({ id, category }) {
 
   return (
     <div className="flex flex-col">
-      {res && (
+      {res.results.length > 0 && (
         <Animate>
           <h1 className="mt-2 text-secondary font-medium text-xl">
             Similar {category == "movie" ? "Movies" : "TVShows"}

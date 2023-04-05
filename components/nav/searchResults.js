@@ -28,12 +28,12 @@ export default function searchResults({ search, reset }) {
   }
 
   return (
-    <div className="absolute w-[25rem] h-fit max-h-80 right-0 rounded-lg overflow-y-auto top-10 px-2 bg-[#3b4240] customScrollBar grid grid-cols-3 gap-2">
+    <div className="absolute w-[15rem] md:w-[25rem] h-fit max-h-80 -right-10 md:right-0 rounded-lg overflow-y-auto top-10 px-2 bg-[#3b4240] customScrollBar grid grid-cols-2 md:grid-cols-3 gap-2">
       {data != null &&
         data.results.map((media) =>
           media.poster_path && (media.title || media.name) ? (
             <div
-              className=" h-[10rem] text-sm rounded-lg flex items-center justify-center text-center  relative overflow-hidden hover:scale-105 transition-all duration-300 ease-in-out"
+              className=" h-[8rem] md:h-[10rem] text-xs md:text-sm rounded-lg flex items-center justify-center text-center  relative overflow-hidden hover:scale-105 transition-all duration-300 ease-in-out"
               key={media.id}
               onClick={() => {
                 router.push(
@@ -44,7 +44,7 @@ export default function searchResults({ search, reset }) {
                 reset("");
               }}
             >
-              <div className="absolute text-primary inset-0 z-10 bg-[#1c2a24] bg-opacity-60 font-semibold text-center flex flex-col items-center justify-center text-sm">
+              <div className="absolute text-primary inset-0 z-10 bg-[#1c2a24] bg-opacity-60 font-medium md:font-semibold text-center flex flex-col items-center justify-center text-xs md:text-sm">
                 {media.title ? media.title : media.name}
               </div>
               <Image

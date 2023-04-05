@@ -19,26 +19,43 @@
       scroll-snap-align: start;
     }
 
-    .carouse:hover > div:not(:hover) {
-      filter: blur(4px)
-    }
+    /*trending padding in home section*/
+    .pd{
+        padding-left: 0.8rem;
+      }
 
     .carousel-scrollbar-hide::-webkit-scrollbar {
       display: none;
     }
 
-    .CarouselItem {
-      flex: 0 0 320px;
-      scroll-snap-align: start;
+    .CarouselItem{
+        flex: 0 0 200px;
+        height: 100%;scroll-snap-align: start;
       scroll-snap-stop: always;
-    }
-
-    
+      }
 
     .CarouselItem:hover::before{
       content: '';
       background-color: #64646434;
+    }
 
+    .searchIcon{
+      font-size: 15px;
+    }
+
+    @media only screen and (min-width: 768px){
+
+      .CarouselItem {
+      flex: 0 0 320px;}
+
+      .pd{
+        padding-left: 2.5rem;
+      }
+
+      .searchIcon{
+        font-size: 20px;
+      }
+  
     }
 
     /*more custorm slider props for carousels other than the homepage's*/

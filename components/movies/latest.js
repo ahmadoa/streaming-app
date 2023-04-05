@@ -16,7 +16,7 @@ export default async function latest() {
     <div className="flex flex-col">
       <Animation>
         <div className="flex flex-row items-center justify-between">
-          <h1 className="h-[5%] mt-6 text-white font-semibold text-base md:text-xl">
+          <h1 className="h-[5%] mt-4 md:mt-6 text-white font-semibold text-base md:text-xl">
             Latest
           </h1>
           <div className="h-[5%] mt-6 mr-3 md:mr-10 text-secondary transition-all duration-300 ease-in-out hover:scale-[1.1] hover:cursor-pointer font-medium md:font-semibold flex flex-row items-center justify-center">

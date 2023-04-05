@@ -15,21 +15,18 @@ export default async function latest() {
   return (
     <div className="flex flex-col">
       <Animation>
-        <div className="flex flex-row justify-between">
-          <h1 className="h-[5%] mt-6 text-white font-semibold text-xl">
+        <div className="flex flex-row justify-between items-center">
+          <h1 className="h-[5%]  mt-4 md:mt-6 text-white font-semibold text-base md:text-xl">
             Latest
           </h1>
-          <div className="h-[5%] mt-6 mr-10 text-secondary transition-all duration-300 ease-in-out hover:scale-[1.1] hover:cursor-pointer font-semibold flex flex-row items-center justify-center">
-            <div className="mb-1">see more</div>
-            <MdOutlineKeyboardDoubleArrowRight
-              size={20}
-              className="fill-secondary"
-            />
+          <div className="h-[5%] mt-6 mr-3 md:mr-10 text-secondary transition-all duration-300 ease-in-out hover:scale-[1.1] hover:cursor-pointer font-medium md:font-semibold flex flex-row items-center justify-center">
+            <div className="mb-0 md:mb-1 text-xs md:text-base">see more</div>
+            <MdOutlineKeyboardDoubleArrowRight className="fill-secondary nextIcon" />
           </div>
         </div>
       </Animation>
 
-      <div className="carouselContainer carousel-scrollbar-hide py-4">
+      <div className="carouselContainer carousel-scrollbar-hide py-2 md:py-4">
         <CarouselWrapper childType="diff">
           {res.results.map((movie) => (
             <MediaCard

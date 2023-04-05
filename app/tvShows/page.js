@@ -8,7 +8,7 @@ export const metadata = {
 
 export default function TVShows() {
   return (
-    <div className="flex flex-col pl-10">
+    <div className="flex flex-col pd">
       <Latest />
       <Popular />
       <AiringToday />

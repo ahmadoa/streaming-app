@@ -39,8 +39,18 @@
       background-color: #64646434;
     }
 
+    /*search icon in the search box*/
     .searchIcon{
       font-size: 15px;
+    }
+
+    /*next icon in movies and tvshows pages see more*/
+    .nextIcon{
+      font-size: 15px;
+    }
+
+    .starIcon{
+      font-size: 11px;
     }
 
     @media only screen and (min-width: 768px){
@@ -55,18 +65,30 @@
       .searchIcon{
         font-size: 20px;
       }
+
+      .starIcon{
+        font-size: 17px;
+      }
+
+      .nextIcon{
+        font-size: 20px;
+      }
+
+      .item{
+        flex: 0 0 10rem;
+      }
   
+    }
+
+    .item{
+      flex: 0 0 7rem;
+      scroll-snap-align: start;
+      scroll-snap-stop: always;
     }
 
     /*more custorm slider props for carousels other than the homepage's*/
     .slider{
       scroll-snap-align: start;
-    }
-    
-    .item{
-      flex: 0 0 10rem;
-      scroll-snap-align: start;
-      scroll-snap-stop: always;
     }
 
     .posterItem{

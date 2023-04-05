@@ -25,7 +25,7 @@ export default function carouselWrapper({ children, childType }) {
         }}
         className={
           childType != "cast"
-            ? `h-full slider flex gap-5 flex-nowrap`
+            ? `h-full slider flex gap-2 md:gap-5 flex-nowrap`
             : `h-full slider flex gap-2 flex-nowrap`
         }
       >

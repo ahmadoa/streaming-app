@@ -32,7 +32,7 @@ export default function mediaCard({ media, category, type }) {
         transition={{
           default: { ease: "easeInOut" },
         }}
-        className="item min-h-[15rem] min-w-[10rem] bg-card rounded-lg p-2 flex flex-col relative cursor-pointer"
+        className="item h-[10rem] w-[7rem] md:min-h-[15rem] md:min-w-[10rem] bg-card rounded-lg p-1 md:p-2 flex flex-col relative cursor-pointer"
         onClick={() =>
           router.push(
             `/${category}/${
@@ -53,20 +53,22 @@ export default function mediaCard({ media, category, type }) {
             priority
           />
         </div>
-        <div className="text-secondary pt-1 font-medium whitespace-nowrap text-ellipsis overflow-hidden max-w-[20rem]">
+        <div className="text-secondary pt-1 font-medium whitespace-nowrap text-xs md:text-base text-ellipsis overflow-hidden max-w-[20rem]">
           {type == "airingToday" || type == "discover" || type == "trending"
             ? media.name
             : media.title}
         </div>
 
         {type != "upcoming" ? (
-          <div className="absolute top-1 right-1 bg-yellow-500 flex flex-row items-center gap-1 px-1 rounded-md">
-            <div className="mb-1">{Number(media.vote_average).toFixed(1)}</div>
-            <AiFillStar size={17} />
+          <div className="absolute top-1 right-1 bg-yellow-500 text-xs md:text-base flex flex-row items-center gap-1 py-[2px] md:py-0 px-1 rounded-md">
+            <div className="mb-0 md:mb-1">
+              {Number(media.vote_average).toFixed(1)}
+            </div>
+            <AiFillStar className="starIcon" />
           </div>
         ) : (
-          <div className="absolute top-1 right-1 bg-yellow-500 flex flex-row items-center gap-1 px-1 rounded-md text-sm font-medium">
-            <div className="mb-1">{media.release_date}</div>
+          <div className="absolute top-1 right-1 bg-yellow-500 flex flex-row items-center gap-1 py-[2px] md:py-0 px-1 rounded-md text-xs md:text-sm font-medium">
+            <div className="mb-0 md:mb-1">{media.release_date}</div>
           </div>
         )}
       </motion.div>

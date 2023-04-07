@@ -53,6 +53,16 @@
       font-size: 11px;
     }
 
+    .starMVTV{
+      font-size: 18px;
+    }
+
+    .castItem{
+      flex: 0 0 2.5rem;
+      scroll-snap-align: start;
+      scroll-snap-stop: always;
+    }
+
     @media only screen and (min-width: 768px){
 
       .CarouselItem {
@@ -70,6 +80,11 @@
         font-size: 17px;
       }
 
+      .starMVTV{
+        font-size: 21px;
+      }
+  
+
       .nextIcon{
         font-size: 20px;
       }
@@ -77,7 +92,16 @@
       .item{
         flex: 0 0 10rem;
       }
-  
+
+      .castItem{
+        flex: 0 0 3.5rem;
+      }
+
+      .posterItem{
+        flex: 0 0 14rem;
+        scroll-snap-align: start;
+        scroll-snap-stop: always;
+      }
     }
 
     .item{
@@ -92,16 +116,11 @@
     }
 
     .posterItem{
-      flex: 0 0 14rem;
+      flex: 0 0 12rem;
       scroll-snap-align: start;
       scroll-snap-stop: always;
     }
-
-    .castItem{
-      flex: 0 0 3.5rem;
-      scroll-snap-align: start;
-      scroll-snap-stop: always;
-    }
+    
 
     /*custom scrollbar*/
     .customScrollBar::-webkit-scrollbar-track

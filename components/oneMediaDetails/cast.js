@@ -28,7 +28,7 @@ export default function posterSlider({ actor }) {
         transition={{
           default: { ease: "easeInOut" },
         }}
-        className="castItem h-14 w-14 rounded-full brightness-[0.8] relative cursor-pointer overflow-hidden"
+        className="castItem h-10 w-10 md:h-14 md:w-14 rounded-full brightness-[0.8] relative cursor-pointer overflow-hidden"
       >
         <Image
           src={imagePath + actor.profile_path}

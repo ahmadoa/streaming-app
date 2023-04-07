@@ -30,7 +30,7 @@ export default function posterSlider({ post, category }) {
         transition={{
           default: { ease: "easeInOut" },
         }}
-        className="posterItem min-h-[9rem] min-w-[14rem] rounded-lg brightness-[0.8] relative cursor-pointer overflow-hidden"
+        className="posterItem min-h-[7rem] min-w-[12rem] md:min-h-[9rem] md:min-w-[14rem] rounded-lg brightness-[0.8] relative cursor-pointer overflow-hidden"
         onClick={() =>
           router.push(
             `/${category == "movie" ? "movies" : "tvShows"}/${

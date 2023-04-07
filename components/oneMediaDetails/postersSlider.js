@@ -11,13 +11,13 @@ export default async function posters({ id, category }) {
   const res = await data.json();
 
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col mb-2 md:mb-0">
       {res.results.length > 0 && (
         <Animate>
-          <h1 className="mt-2 text-secondary font-medium text-xl">
+          <h1 className="mt-2 text-primary font-medium text-base md:text-xl">
             Similar {category == "movie" ? "Movies" : "TVShows"}
           </h1>
-          <div className="carouselContainer carousel-scrollbar-hide py-3">
+          <div className="carouselContainer carousel-scrollbar-hide py-1 md:py-3">
             <CarouselWrapper childType="diff">
               {res.results.map((movie) =>
                 movie.backdrop_path != null ? (

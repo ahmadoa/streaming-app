@@ -89,74 +89,84 @@ export default async function Movie({ params }) {
 
   return (
     <Suspense fallback={<Loading />}>
-      <div className="w-full h-full flex flex-col overflow-hidden relative">
-        <div className="w-full h-full after:vignette filter brightness-75 rounded-tl-3xl rounded-tr-3xl relative overflow-hidden">
-          <Image
-            src={imagePath + res.backdrop_path}
-            fill
-            alt={res.backdrop_path + " poster"}
-            style={{ objectFit: "cover", pointerEvents: "none" }}
-            quality={80}
-            priority
-          />
-        </div>
+      <div className="w-full  min-h-full flex overflow-y-auto overflow-x-hidden md:overflow-hidden relative">
+        <div
+          className="w-full md:h-full h-40 absolute top-0 left-0 md:after:vignette bg-cover bg-center filter brightness-50 md:brightness-75 rounded-2xl md:rounded-tl-3xl md:rounded-tr-3xl overflow-hidden"
+          style={{
+            backgroundImage: `url(${imagePath + res.backdrop_path})`,
+          }}
+        ></div>
 
         {res && (
-          <div className="w-full h-full flex flex-col justify-between ml-10 absolute top-0 py-5">
+          <div className="flex flex-col justify-between pl-3 md:pl-10 absolute top-0  left-0 right-0 bottom-0 py-2 md:py-5 gap-3 md:gap-0">
             {/*details of movie section*/}
             <AnimateUp>
-              <div className="w-full flex flex-row">
-                <div className="overview w-[50%] flex flex-col">
-                  <div className="font-bold text-3xl text-secondary mb-5">
+              <div className="w-full flex flex-col gap-3 md:gap-0">
+                <div className="w-full flex flex-row justify-between items-center">
+                  <div className="font-bold text-xl md:text-3xl text-secondary">
                     {res.title}
                   </div>
-                  <div className="flex flex-row justify-between mb-3">
-                    <div className="flex flex-row items-center text-secondary">
-                      <AiFillStar
-                        size={21}
-                        className="fill-yellow-500 pr-1 -mb-1"
-                      />
-                      <div className="text-lg font-medium pr-1">
-                        {Number(res.vote_average).toFixed(1)}
-                      </div>
-                      |<div className="pl-1">{res.vote_count}</div>
-                    </div>
-                    <div className="flex flex-row items-center justify-center pr-5 text-neutral-200">
-                      <div>{time_convert(res.runtime)}</div>
-                      <div className="scale-[2.5] mb-1 mx-2">&#183;</div>
-                      <div>
-                        {res.genres.map((genre, i) => {
-                          if (i + 1 === res.genres.length) {
-                            return <span key={genre.id}>{genre.name}</span>;
-                          } else {
-                            return (
-                              <span key={genre.id}>{genre.name + ", "}</span>
-                            );
-                          }
-                        })}
-                      </div>
-                      <div className="scale-[2.5] mb-1 mx-2">&#183;</div>
-                      <div>{getYear(res.release_date)}</div>
-                    </div>
-                  </div>
-                  <div className="text-sm text-neutral-300">{res.overview}</div>
-                </div>
-                {Trailer != null && (
-                  <div className="w-[50%] flex flex-col text-white items-end mr-20">
+                  {Trailer != null && (
                     <Link
                       href={youtubePath + Trailer.key}
                       target="_blank"
-                      className="bg-primary font-medium px-4 py-2 rounded-xl w-min whitespace-nowrap hover:scale-110 duration-300 ease-in-out transition-all"
+                      className="bg-primary text-white text-xs md:text-base font-medium px-2 md:px-4 py-1 md:py-2 rounded-md md:rounded-xl w-min whitespace-nowrap hover:scale-110 duration-300 ease-in-out transition-all mr-3 md:mr-10"
                     >
                       Watch Trailer
                     </Link>
+                  )}
+                </div>
+                <div className="w-full md:w-[60%] flex flex-col md:flex-row mb-3">
+                  <div className="flex flex-row items-center text-secondary">
+                    <AiFillStar className="fill-yellow-500 starMVTV pr-1 mb-0 selection:md:-mb-1" />
+                    <div className="text-xs md:text-lg font-medium pr-1">
+                      {Number(res.vote_average).toFixed(1)}
+                    </div>
+                    |
+                    <div className="text-xs md:text-base pl-1">
+                      {res.vote_count}
+                    </div>
                   </div>
-                )}
+                  <div className="flex flex-col md:flex-row md:items-center ml-0 md:ml-5 mt-1 md:mt-0 text-neutral-300 text-xs md:text-base">
+                    <div className="flex flex-row">
+                      <span className="block md:hidden pr-2 font-medium text-primary">
+                        Duration :
+                      </span>
+                      {time_convert(res.runtime)}
+                    </div>
+                    <div className="scale-[2.5] hidden md:flex mb-1 mx-1 md:mx-2">
+                      &#183;
+                    </div>
+                    <div>
+                      {res.genres.map((genre, i) => {
+                        if (i + 1 === res.genres.length) {
+                          return <span key={genre.id}>{genre.name}</span>;
+                        } else {
+                          return (
+                            <span key={genre.id}>{genre.name + ", "}</span>
+                          );
+                        }
+                      })}
+                    </div>
+                    <div className="scale-[2.5] hidden md:flex  mb-1 mx-1 md:mx-2">
+                      &#183;
+                    </div>
+                    <div className="flex flex-row">
+                      <span className="block md:hidden pr-2 font-medium text-primary">
+                        Release year :
+                      </span>
+                      {getYear(res.release_date)}
+                    </div>
+                  </div>
+                </div>
+                <div className="w-full md:w-[60%] pr-3 md:pr-0 text-sm text-neutral-300">
+                  {res.overview}
+                </div>
               </div>
             </AnimateUp>
             {/*cast component*/}
             {resData.cast.length > 0 && (
-              <div className="w-fit max-w-[50%] flex flex-col">
+              <div className="w-fit max-w-[70%] md:max-w-[50%] flex flex-col">
                 <div className="w-full">
                   <Cast data={resData} />
                 </div>

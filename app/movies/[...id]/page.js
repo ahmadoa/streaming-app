@@ -103,7 +103,7 @@ export default async function Movie({ params }) {
             <AnimateUp>
               <div className="w-full flex flex-col gap-3 md:gap-0">
                 <div className="w-full flex flex-row justify-between items-center">
-                  <div className="font-bold text-xl md:text-3xl text-secondary">
+                  <div className="max-w-[70%] font-bold text-lg md:text-3xl text-secondary">
                     {res.title}
                   </div>
                   {Trailer != null && (
